@@ -14,7 +14,7 @@ public class MemberResponseDto {
 
     public MemberResponseDto(Member member) {
         this.mno = member.getMno();
-        this.id = member.getId();
+        this.id = member.getMemberId();
         this.name = member.getName();
     }
 }

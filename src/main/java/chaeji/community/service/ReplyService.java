@@ -50,8 +50,8 @@ public class ReplyService {
         return new ReplyResponseDto(reply);
     }
 
-    public List<ReplyResponseDto> findAll() {
-        return replyRepository.findAll().stream().map(ReplyResponseDto::new).collect(Collectors.toList());
+    public List<ReplyResponseDto> findByBno(Long bno) {
+        return replyRepository.findByBno(bno).stream().map(ReplyResponseDto::new).collect(Collectors.toList());
     }
 
     @Transactional

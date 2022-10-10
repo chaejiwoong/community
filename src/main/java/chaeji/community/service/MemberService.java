@@ -23,7 +23,7 @@ public class MemberService {
     public Long save(MemberRequestDto dto) {
 
         Member member = Member.builder()
-                .id(dto.getId())
+                .memberId(dto.getId())
                 .password(dto.getPassword())
                 .name(dto.getName())
                 .build();
@@ -60,5 +60,15 @@ public class MemberService {
         memberRepository.deleteById(mno);
 
         return mno;
+    }
+
+    public MemberResponseDto login(MemberRequestDto dto) {
+        Member member = memberRepository.findByMemberId(dto.getId()).orElseThrow(() ->
+                new IllegalArgumentException("해당 회원이 존재하지 않습니다."));
+        if (member.getPassword().equals(dto.getPassword())) {
+            return new MemberResponseDto(member);
+        } else {
+            return null;
+        }
     }
 }

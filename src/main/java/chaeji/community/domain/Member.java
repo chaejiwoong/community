@@ -19,7 +19,7 @@ public class Member extends BaseTimeEntity{
     private Long mno;
 
     @Column(unique = true)
-    private String id;
+    private String memberId;
 
     private String password;
 
